@@ -1,0 +1,122 @@
+{
+  "1": {
+    "reliquia": ["Fyrelvia" , "Qyresha"],
+    "dono": "BogDan",
+    "nome": "Aneis das Deusas",
+    "dano":"-",
+    "Descricao": "Dois anel forjado pelas deusas capaz de armazenar itens forjado pelas deusas Fyrelvia e Qyresha.O portador pode troca de item 3 antes de um descanso curto. cada anel consede ao usuario o poder de um dos itens guardado, caso o portador morra os items serão devolvido para suas donas originais.",
+    "imgUrl": "../../../public/armas/Aneis-das-deusas.jpg"
+  },
+  "2": {
+    "reliquia": "Qyresha",
+    "dono": "Perdida",
+    "nome": " Arpa-da-auvorada",
+    "dano":"-",
+    "Descricao": ["Uma Arpa Forjada com o poder do sol e da lua, Possui 2 cargas de Luz protetora, luz protetora pode conjurar duas magias de proteção por dia: Escudo da Fé ou Benção. Enquanto a arma estiver conjurada"],
+    "imgUrl": "../../../public/armas/Arpa-da-auvorada.jpg"
+  },
+  "3": {
+    "reliquia": "Fyrelvia",
+    "dono": "Twinor, o Duplo",
+    "nome": " ",
+    "dano":"!",
+    "Descricao": "",
+    "imgUrl": ""
+  },
+  "4": {
+    "reliquia": "Fyrelvia",
+    "dono": "Gutsen, o Glutão",
+    "nome": " ",
+    "dano":"!",
+    "Descricao": "",
+    "imgUrl": ""
+  },
+  "5": {
+    "reliquia": "Fyrelvia",
+    "dono": "Fyrelvia",
+    "nome": " ",
+    "dano":"!",
+    "Descricao": "",
+    "imgUrl": ""
+  },
+  "6": {
+    "reliquia": "Fyrelvia",
+    "dono": "Flamis, o Crocante",
+    "nome": "",
+    "dano":"!",
+    "Descricao": "",
+    "imgUrl": ""
+  },
+  "7": {
+    "reliquia": "Fyrelvia",
+    "dono": "Cheddos, o Derretido",
+    "nome": "  ",
+    "dano":"!",
+    "Descricao": "",
+    "imgUrl": ""
+  },
+  "8": {
+    "reliquia": "Fyrelvia",
+    "dono": "Desconhecido",
+    "nome": " Bincos da protetora ",
+    "dano":"-",
+    "Descricao": "Um conjunto de 8 brincos feitos para protejer quem os usa, cada brinco usado reduz 1 de dano recebido de ataques mágicos ou físicos.",
+    "imgUrl": "../../../public/armas/Bincos-do-inquisidor.jpg"
+  },
+  "9": {
+    "reliquia": "Qyresha",
+    "dono": "Desconhecido",
+    "nome": "Destino ",
+    "dano":"1d8+2",    
+    "Descricao": "Destino e uma Rapieira que causa dano fisico, mas se um inimogo em um raio de 8m tenta conjurar magia o portador da Desinno pode usar sua ação bonus para cancelar o lançamento da magia",
+    "imgUrl": "../../../public/armas/Destino.jpg"
+  },
+  "10": {
+    "reliquia": "Qyresha",
+    "dono": "Desconhecido",
+    "nome": "Espelho-de-Qyresha ",
+    "dano":"1d12",    
+    "Descricao": "Um machado de duas mãos mas com um espelho no centro, o espelho pode refletir qualquer magia de ataque lançadas contra o portador, Apos ser refletida o machado se quebra ficando inutilizado ate o proximo descanso longo",
+    "imgUrl": "../../../public/armas/Espelho-de-Qyresha.jpg"
+  },
+  "11": {
+    "reliquia": "Qyresha",
+    "dono": "Vorn, o Atômico",
+    "nome": "Grimoire",
+    "dano":"!",    
+    "Descricao": "O grimorio de Qyresha, capaz de armazenar magias, o portador pode conjurar 3 magias, as magias que vão aparecer serão aleatorias. Apos o nivel 3 o portador pode usar seus espçoes de magia para usar as magias do grimorio.",
+    "imgUrl": "../../../public/armas/Grimoire.jpg"
+  },
+  "12": {
+    "reliquia": "Qyresha",
+    "dono": "Guaran, o Selvagem",
+    "nome": " Mestre-de-percussão.jpg ",
+    "dano":"!",   
+    "Descricao": "",
+    "imgUrl": "../../../public/armas/Mestre-de-percussão.jpg"
+  },
+  "13": {
+    "reliquia": "Qyresha",
+    "dono": "Desconhecido",
+    "nome": "Voz de Qyresha",
+    "dano":"-",    
+    "Descricao": "Um Violão que concede ao portador o truque bola de fogo e uma carga da magia bola de fogo no nivel 6. Concede +2 de perfomace ao usar o instrumento.",
+    "imgUrl": "../../../public/armas/Voz-de-Qyresha.jpg"
+  },
+  "14": {
+    "reliquia": "Qyresha",
+    "dono": "",
+    "nome": "  ",
+    "dano":"!",    
+    "Descricao": "",
+    "imgUrl": ""
+  },
+  "15": {
+    "reliquia": "Fyrelvia",
+    "dono": "Fabius Bile ",
+    "nome": " ",
+    "dano":"2d6+2",   
+    "Descricao": "Concede o estilo de luta Duelismo ao portador. Uma varinha que conjura uma rapieira que alem do dano fisico causa 1d6 de dano psiquico.",
+    "imgUrl":"../../../public/armas/Lamina-arcana.jpg"
+  }
+}
