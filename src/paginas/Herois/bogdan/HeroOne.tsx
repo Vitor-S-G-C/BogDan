@@ -5,8 +5,6 @@ import {
   Grid,
   Typography,
   Container,
-  useMediaQuery,
-  useTheme,
   Divider,
   Card,
   CardMedia,
@@ -16,8 +14,7 @@ import { GiCrossedSwords, GiMagicSwirl } from "react-icons/gi";
 import items from "../../../data/dataArma/items.json";
 
 export function BogDanPage() {
-  const theme = useTheme();
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+  
 
   // 1. CORREÇÃO NA VARIÁVEL E NO FILTRO
   // O nome do dono no JSON é "Bog Dan, o presenteado das Deusas", então usamos includes.
@@ -63,9 +60,7 @@ export function BogDanPage() {
           <Grid container spacing={0}>
             {/* Imagem (Este já tinha 'item') */}
             <Grid
-              item
-              xs={12}
-              md={4}
+              size={{ xs: 12, md: 4 }}
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -94,7 +89,7 @@ export function BogDanPage() {
             </Grid>
 
             {/* 4. CORREÇÃO: Adicionar 'item' no Grid de Informações */}
-            <Grid item xs={12} md={8}>
+            <Grid size={{ xs: 12, md: 8 }}>
               <Box sx={{ p: { xs: 3, md: 5 } }}>
                 <Typography
                 // ... (Nome do Personagem)
@@ -122,7 +117,7 @@ export function BogDanPage() {
                     ["CA", BogDan.CA, <GiCrossedSwords />],
                   ].map(([nome, valor, icone], i) => (
                     // 2. CORREÇÃO: Adicionar 'item' aqui
-                    <Grid item xs={6} key={i}>
+                    <Grid size={{ xs: 6 }} key={i}>
                       <Box
                         sx={{
                           bgcolor: "#3A3833",
@@ -173,8 +168,9 @@ export function BogDanPage() {
           {/* Grid Container para os Itens */}
           <Grid container spacing={3} justifyContent="center">
             {BogDanItems.map((item, index) => (
-              // 3. CORREÇÃO: Adicionar 'item' aqui. O nome da variável é 'BogDanItems'
-              <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <Grid size={{ xs:12, sm : 6, md:4, lg:3 }} key={index}>
+                {" "}
+                
                 <Card
                   sx={{
                     bgcolor: "#3A3833",
