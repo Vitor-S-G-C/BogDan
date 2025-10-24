@@ -13,7 +13,6 @@ import {
   CardContent,
 } from "@mui/material";
 import { GiCrossedSwords, GiMagicSwirl } from "react-icons/gi";
-import Slider from "react-slick"; // carrossel
 import items from "../../../data/dataArma/items.json";
 
 // Dados de teste - você pode substituir depois pelo seu JSON real
@@ -25,23 +24,6 @@ export function QyreshaPage() {
   const QyreshaArray = Object.values(items).filter(
     (item) => item.reliquia === "Qyresha"
   );
-
-  // Configuração do carrossel
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    responsive: [
-      {
-        breakpoint: 900,
-        settings: { slidesToShow: 1 },
-      },
-    ],
-  };
 
   return (
     <>
@@ -62,9 +44,7 @@ export function QyreshaPage() {
           <Grid container spacing={0}>
             {/* Imagem */}
             <Grid
-              item
-              xs={12}
-              md={4}
+              size={{ xs: 12, md: 4 }}
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -93,7 +73,7 @@ export function QyreshaPage() {
             </Grid>
 
             {/* Informações */}
-            <Grid item xs={12} md={8}>
+            <Grid size={{ xs: 12, md: 8 }}>
               <Box sx={{ p: { xs: 3, md: 5 } }}>
                 <Typography
                   variant="h3"
@@ -140,7 +120,7 @@ export function QyreshaPage() {
                     ["Carisma", Qyresha.carisma, <GiMagicSwirl />],
                     ["CA", Qyresha.CA, <GiCrossedSwords />],
                   ].map(([nome, valor, icone], i) => (
-                    <Grid item xs={6} key={i}>
+                    <Grid size={{ xs: 6 }} key={i}>
                       <Box
                         sx={{
                           bgcolor: "#3A3833",
@@ -217,7 +197,7 @@ export function QyreshaPage() {
 
           <Grid container spacing={3} justifyContent="center">
             {Object.values(QyreshaArray).map((item, index) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={index}>
                 <Card
                   sx={{
                     bgcolor: "#3A3833",
@@ -235,11 +215,16 @@ export function QyreshaPage() {
                 >
                   <CardMedia
                     component="img"
-                    height="1000 rem"
-                    image={item.imgUrl}
+                    height="200" // Use uma unidade válida como '200px' ou apenas '200' para px
+                    // Ajuste o caminho da imagem, se necessário, para ser público
+                    image={
+                      item.imgUrl
+                        ? item.imgUrl.replace("../../../public", "")
+                        : "/placeholder/item.jpg"
+                    }
                     alt={item.nome}
                     sx={{
-                      objectFit: "cover",
+                      objectFit: "contain",
                       borderRadius: 2,
                       border: "2px solid #D4AF37",
                     }}
