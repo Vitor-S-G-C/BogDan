@@ -26,7 +26,8 @@ export function FyrelviaPage() {
   );
 
 
-    const settings = { };
+    // TODO: configurar carrossel futuramente (react-slick / swiper)
+  const _settings = {};
   return (
     <>
       <DeusasBar />
