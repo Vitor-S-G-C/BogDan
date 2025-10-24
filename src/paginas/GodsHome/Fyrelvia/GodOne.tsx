@@ -25,6 +25,8 @@ export function FyrelviaPage() {
     (item) => item.reliquia === "Fyrelvia"
   );
 
+
+    const settings = { };
   return (
     <>
       <DeusasBar />
