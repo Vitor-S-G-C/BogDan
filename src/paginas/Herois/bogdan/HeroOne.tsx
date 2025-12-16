@@ -1,230 +1,292 @@
 import BogDan from "../../../data/dataPerson/Hero";
-
+import { AttributeCard } from "../../../components/AttributeCard";
+import { ItemCard } from "../../../components/ItemCard";
 import {
   Box,
   Grid,
   Typography,
   Container,
   Divider,
-  Card,
-  CardMedia,
-  CardContent,
+  Paper,
 } from "@mui/material";
-import { GiCrossedSwords, GiMagicSwirl } from "react-icons/gi";
+import {
+  GiCrossedSwords,
+  GiMagicSwirl,
+  GiHeartShield,
+  GiBrain,
+  GiWisdom,
+  GiPublicSpeaker,
+  GiShield,
+} from "react-icons/gi";
 import items from "../../../data/dataArma/items.json";
 
 export function BogDanPage() {
-  
-
-  // 1. CORREÇÃO NA VARIÁVEL E NO FILTRO
-  // O nome do dono no JSON é "Bog Dan, o presenteado das Deusas", então usamos includes.
-  // Renomeei para BogDanItems para manter a coerência com o uso no final.
   const BogDanItems = Object.values(items).filter(
     (item) => item.dono && item.dono.includes("BogDan")
   );
 
-  // A 'settings' não está sendo usada já que você usou Grid, mas a mantive se for usá-la depois.
-  /*
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    responsive: [
-      {
-        breakpoint: 900,
-        settings: { slidesToShow: 1 },
-      },
-    ],
-  };
-  */
+  const attributes = [
+    { name: "Força", value: BogDan.forca, icon: <GiCrossedSwords /> },
+    { name: "Destreza", value: BogDan.destreza, icon: <GiMagicSwirl /> },
+    { name: "Constituição", value: BogDan.constituicao, icon: <GiHeartShield /> },
+    { name: "Inteligência", value: BogDan.inteligencia, icon: <GiBrain /> },
+    { name: "Sabedoria", value: BogDan.sabedoria, icon: <GiWisdom /> },
+    { name: "Carisma", value: BogDan.carisma, icon: <GiPublicSpeaker /> },
+    { name: "CA", value: BogDan.CA, icon: <GiShield /> },
+  ];
 
   return (
-    <>
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box
-          sx={{
-            bgcolor: "url('/img/pergaminho-texture.jpg')",
-            backgroundSize: "cover",
-            color: "#F9E4B7",
-            borderRadius: 3,
-            boxShadow: 8,
-            overflow: "hidden",
-            border: "6px solid #D4AF37",
-          }}
-        >
-          {/* Grid Container principal */}
-          <Grid container spacing={0}>
-            {/* Imagem (Este já tinha 'item') */}
-            <Grid
-              size={{ xs: 12, md: 4 }}
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "flex-start",
-                p: { xs: 2, md: 4 },
-                borderRight: "4px solid #D4AF37",
-                borderBottom: "4px solid #D4AF37",
-                bgcolor: "#3A3833",
-              }}
-            >
-              <Box
-                component="img"
-                src={BogDan.img}
-                alt={BogDan.nome}
-                sx={{
-                  width: "100%",
-                  height: "auto",
-                  maxWidth: 250,
-                  maxHeight: 250,
-                  objectFit: "cover",
-                  borderRadius: 2,
-                  boxShadow: 5,
-                  border: "3px solid #D4AF37",
-                }}
-              />
-            </Grid>
-
-            {/* 4. CORREÇÃO: Adicionar 'item' no Grid de Informações */}
-            <Grid size={{ xs: 12, md: 8 }}>
-              <Box sx={{ p: { xs: 3, md: 5 } }}>
-                <Typography
-                // ... (Nome do Personagem)
-                >
-                  {BogDan.nome}
-                </Typography>
-
-                <Divider sx={{ mb: 3, bgcolor: "#D4AF37" }} />
-
-                {/* Atributos */}
-                <Typography
-                // ...
-                >
-                  Atributos
-                </Typography>
-
-                <Grid container spacing={2} sx={{ mb: 4 }}>
-                  {[
-                    ["Força", BogDan.forca, <GiCrossedSwords />],
-                    ["Destreza", BogDan.destreza, <GiMagicSwirl />],
-                    ["Constituição", BogDan.constituicao, <GiCrossedSwords />],
-                    ["Inteligência", BogDan.inteligencia, <GiMagicSwirl />],
-                    ["Sabedoria", BogDan.sabedoria, <GiMagicSwirl />],
-                    ["Carisma", BogDan.carisma, <GiMagicSwirl />],
-                    ["CA", BogDan.CA, <GiCrossedSwords />],
-                  ].map(([nome, valor, icone], i) => (
-                    // 2. CORREÇÃO: Adicionar 'item' aqui
-                    <Grid size={{ xs: 6 }} key={i}>
-                      <Box
-                        sx={{
-                          bgcolor: "#3A3833",
-                          border: "2px solid #D4AF37",
-                          borderRadius: 2,
-                          px: 2,
-                          py: 1,
-                          textAlign: "center",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          gap: 1,
-                          fontFamily: "serif",
-                        }}
-                      >
-                        {icone}
-                        <Typography variant="body1">
-                          <strong>{nome}:</strong> {valor}
-                        </Typography>
-                      </Box>
-                    </Grid>
-                  ))}
-                </Grid>
-
-                <Divider sx={{ mb: 3, bgcolor: "#D4AF37" }} />
-
-                {/* Sobre */}
-                {/* ... (Conteúdo do 'Sobre') ... */}
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
-
-        {/* --- SEÇÃO DE ITENS (CORRIGIDA) --- */}
-        <Box sx={{ mt: 6, textAlign: "center" }}>
-          <Typography
-            variant="h4"
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      {/* Cabeçalho Principal */}
+      <Box
+        sx={{
+          bgcolor: "#2C2B28",
+          backgroundImage: "linear-gradient(135deg, #2C2B28 0%, #1C1B18 100%)",
+          color: "#F9E4B7",
+          borderRadius: 4,
+          boxShadow: "0 10px 30px rgba(0,0,0,0.6)",
+          overflow: "hidden",
+          border: "4px solid #D4AF37",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: "-100%",
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent)",
+            animation: "shimmer 3s infinite",
+          },
+        }}
+      >
+        <Grid container spacing={0}>
+          {/* Seção da Imagem */}
+          <Grid
+            size={{ xs: 12, md: 4 }}
             sx={{
-              color: "#FFD700",
-              fontFamily: "serif",
-              mb: 3,
-              textShadow: "2px 2px 4px #000",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              p: { xs: 3, md: 4 },
+              bgcolor: "rgba(58, 56, 51, 0.6)",
+              borderRight: { md: "4px solid #D4AF37" },
+              borderBottom: { xs: "4px solid #D4AF37", md: "none" },
             }}
           >
-            Itens de Bog Dan
-          </Typography>
+            <Box
+              component="img"
+              src={BogDan.img}
+              alt={BogDan.nome}
+              sx={{
+                width: "100%",
+                height: "auto",
+                maxWidth: 280,
+                objectFit: "cover",
+                borderRadius: 3,
+                boxShadow: "0 8px 20px rgba(0,0,0,0.6)",
+                border: "4px solid #D4AF37",
+                transition: "transform 0.3s ease",
+                animation: "fadeInScale 0.8s ease-out",
+                "&:hover": {
+                  transform: "scale(1.05) rotate(1deg)",
+                  boxShadow: "0 12px 30px rgba(255,215,0,0.4)",
+                },
+              }}
+            />
+          </Grid>
 
-          {/* Grid Container para os Itens */}
+          {/* Seção de Informações */}
+          <Grid size={{ xs: 12, md: 8 }}>
+            <Box sx={{ p: { xs: 3, md: 5 } }}>
+              <Typography
+                variant="h3"
+                component="h1"
+                gutterBottom
+                sx={{
+                  color: "#FFD700",
+                  fontFamily: "var(--font-title)",
+                  textShadow: "3px 3px 6px #000",
+                  mb: 2,
+                  letterSpacing: 2,
+                  fontWeight: 900,
+                  animation: "fadeIn 1s ease-out",
+                  textAlign: { xs: "center", md: "left" },
+                }}
+              >
+                {BogDan.nome}
+              </Typography>
+
+              <Divider
+                sx={{
+                  mb: 3,
+                  height: 3,
+                  bgcolor: "#D4AF37",
+                  boxShadow: "0 0 10px rgba(212, 175, 55, 0.5)",
+                }}
+              />
+
+              {/* Título de Atributos */}
+              <Typography
+                variant="h5"
+                sx={{
+                  color: "#FFD700",
+                  fontFamily: "var(--font-title)",
+                  mb: 2,
+                  fontWeight: 700,
+                  textAlign: "center",
+                  textShadow: "2px 2px 4px #000",
+                }}
+              >
+                Atributos
+              </Typography>
+
+              {/* Grid de Atributos */}
+              <Grid container spacing={2} sx={{ mb: 4 }}>
+                {attributes.map((attr, index) => (
+                  <Grid size={{ xs: 6, sm: 4, md: 3 }} key={index}>
+                    <AttributeCard
+                      name={attr.name}
+                      value={attr.value}
+                      icon={attr.icon}
+                      delay={index * 0.1}
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+
+              <Divider
+                sx={{
+                  my: 3,
+                  height: 2,
+                  bgcolor: "#D4AF37",
+                }}
+              />
+
+              {/* Seção Sobre */}
+              <Typography
+                variant="h5"
+                sx={{
+                  color: "#FFD700",
+                  fontFamily: "var(--font-title)",
+                  mb: 2,
+                  fontWeight: 700,
+                  textShadow: "2px 2px 4px #000",
+                }}
+              >
+                História
+              </Typography>
+
+              <Box
+                sx={{
+                  maxHeight: { xs: 300, md: 400 },
+                  overflowY: "auto",
+                  pr: 2,
+                  "&::-webkit-scrollbar": {
+                    width: "8px",
+                  },
+                  "&::-webkit-scrollbar-track": {
+                    bgcolor: "#2C2B28",
+                    borderRadius: 10,
+                  },
+                  "&::-webkit-scrollbar-thumb": {
+                    bgcolor: "#D4AF37",
+                    borderRadius: 10,
+                    "&:hover": {
+                      bgcolor: "#FFD700",
+                    },
+                  },
+                }}
+              >
+                {BogDan.sobre.map((paragrafo, index) => (
+                  <Paper
+                    key={index}
+                    elevation={2}
+                    sx={{
+                      mb: 2,
+                      p: 2,
+                      bgcolor: "rgba(58, 56, 51, 0.6)",
+                      border: "1px solid #D4AF37",
+                      borderRadius: 2,
+                      animation: "fadeIn 0.6s ease-out forwards",
+                      animationDelay: `${index * 0.2}s`,
+                    }}
+                  >
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontFamily: "var(--font-body)",
+                        color: "#F9E4B7",
+                        lineHeight: 1.8,
+                        fontSize: "1.05rem",
+                      }}
+                    >
+                      {paragrafo}
+                    </Typography>
+                  </Paper>
+                ))}
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>      {/* --- SEÇÃO DE ITENS --- */}
+      <Box sx={{ mt: 6 }}>
+        <Typography
+          variant="h4"
+          sx={{
+            color: "#FFD700",
+            fontFamily: "var(--font-title)",
+            mb: 4,
+            textAlign: "center",
+            textShadow: "3px 3px 6px #000",
+            fontWeight: 900,
+            letterSpacing: 2,
+            animation: "fadeIn 1s ease-out",
+          }}
+        >
+          ⚔️ Arsenal de {BogDan.nome.split(",")[0]} ⚔️
+        </Typography>
+
+        {BogDanItems.length > 0 ? (
           <Grid container spacing={3} justifyContent="center">
             {BogDanItems.map((item, index) => (
-              <Grid size={{ xs:12, sm : 6, md:4, lg:3 }} key={index}>
-                {" "}
-                
-                <Card
-                  sx={{
-                    bgcolor: "#3A3833",
-                    color: "#F9E4B7",
-                    border: "2px solid #D4AF37",
-                    borderRadius: 3,
-                    textAlign: "center",
-                    p: 2,
-                    mx: "auto",
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="200" // Use uma unidade válida como '200px' ou apenas '200' para px
-                    // Ajuste o caminho da imagem, se necessário, para ser público
-                    image={
-                      item.imgUrl
-                        ? item.imgUrl.replace("../../../public", "")
-                        : "/placeholder/item.jpg"
-                    }
-                    alt={item.nome}
-                    sx={{
-                      objectFit: "contain",
-                      borderRadius: 2,
-                      border: "2px solid #D4AF37",
-                    }}
-                  />
-
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h6" sx={{ fontFamily: "serif" }}>
-                      {item.nome}
-                    </Typography>
-                    <Typography variant="body2" sx={{ mt: 1 }}>
-                      {/* Corrigindo a redundância na descrição */}
-                      {item.Descricao ?? "Sem descrição."}
-                    </Typography>
-                    <Typography>
-                      <strong>Dono:</strong> {item.dono}
-                    </Typography>
-                    <Typography>
-                      <strong>Dano:</strong> {item.dano}
-                    </Typography>
-                  </CardContent>
-                </Card>
+              <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={index}>
+                <ItemCard
+                  name={item.nome}
+                  description={item.Descricao ?? "Sem descrição."}
+                  owner={item.dono}
+                  damage={item.dano}
+                  imageUrl={item.imgUrl}
+                  delay={index * 0.1}
+                />
               </Grid>
             ))}
           </Grid>
-        </Box>
-      </Container>
-    </>
+        ) : (
+          <Box
+            sx={{
+              textAlign: "center",
+              py: 4,
+              bgcolor: "#2C2B28",
+              borderRadius: 3,
+              border: "2px solid #D4AF37",
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                color: "#D4AF37",
+                fontFamily: "var(--font-body)",
+                fontStyle: "italic",
+              }}
+            >
+              Nenhum item encontrado para este herói.
+            </Typography>
+          </Box>
+        )}
+      </Box>
+    </Container>
   );
 }
 

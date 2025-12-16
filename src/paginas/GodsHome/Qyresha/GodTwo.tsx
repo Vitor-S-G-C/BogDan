@@ -1,44 +1,68 @@
 import { Qyresha } from "../../../data/dataPerson/God";
+import { AttributeCard } from "../../../components/AttributeCard";
+import { ItemCard } from "../../../components/ItemCard";
 import DeusasBar from "../DeusasBar";
 import {
   Box,
   Grid,
   Typography,
   Container,
-  useMediaQuery,
-  useTheme,
   Divider,
-  Card,
-  CardMedia,
-  CardContent,
+  Paper,
 } from "@mui/material";
-import { GiCrossedSwords, GiMagicSwirl } from "react-icons/gi";
+import {
+  GiCrossedSwords,
+  GiMagicSwirl,
+  GiHeartShield,
+  GiBrain,
+  GiWisdom,
+  GiPublicSpeaker,
+  GiShield,
+} from "react-icons/gi";
 import items from "../../../data/dataArma/items.json";
 
-// Dados de teste - você pode substituir depois pelo seu JSON real
-
-
 export function QyreshaPage() {
-  const theme = useTheme();
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   const QyreshaArray = Object.values(items).filter(
     (item) => item.reliquia === "Qyresha"
   );
+
+  const attributes = [
+    { name: "Força", value: Qyresha.forca, icon: <GiCrossedSwords /> },
+    { name: "Destreza", value: Qyresha.destreza, icon: <GiMagicSwirl /> },
+    { name: "Constituição", value: Qyresha.constituicao, icon: <GiHeartShield /> },
+    { name: "Inteligência", value: Qyresha.inteligencia, icon: <GiBrain /> },
+    { name: "Sabedoria", value: Qyresha.sabedoria, icon: <GiWisdom /> },
+    { name: "Carisma", value: Qyresha.carisma, icon: <GiPublicSpeaker /> },
+    { name: "CA", value: Qyresha.CA, icon: <GiShield /> },
+  ];
 
   return (
     <>
       <DeusasBar />
 
       <Container maxWidth="lg" sx={{ py: 4 }}>
+        {/* Card Principal da Deusa */}
         <Box
           sx={{
-            bgcolor: "url('/img/pergaminho-texture.jpg')",
-            backgroundSize: "cover",
+            bgcolor: "#2C2B28",
+            backgroundImage: "linear-gradient(135deg, #2C2B28 0%, #1C1B18 100%)",
             color: "#F9E4B7",
-            borderRadius: 3,
-            boxShadow: 8,
+            borderRadius: 4,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.6)",
             overflow: "hidden",
-            border: "6px solid #D4AF37",
+            border: "4px solid #D4AF37",
+            position: "relative",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: "-100%",
+              width: "100%",
+              height: "100%",
+              background:
+                "linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent)",
+              animation: "shimmer 3s infinite",
+            },
           }}
         >
           <Grid container spacing={0}>
@@ -48,11 +72,11 @@ export function QyreshaPage() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "flex-start",
-                p: { xs: 2, md: 4 },
-                borderRight: "4px solid #D4AF37",
-                borderBottom: "4px solid #D4AF37",
-                bgcolor: "#3A3833",
+                alignItems: "center",
+                p: { xs: 3, md: 4 },
+                bgcolor: "rgba(58, 56, 51, 0.6)",
+                borderRight: { md: "4px solid #D4AF37" },
+                borderBottom: { xs: "4px solid #D4AF37", md: "none" },
               }}
             >
               <Box
@@ -62,12 +86,17 @@ export function QyreshaPage() {
                 sx={{
                   width: "100%",
                   height: "auto",
-                  maxWidth: 250,
-                  maxHeight: 250,
+                  maxWidth: 280,
                   objectFit: "cover",
-                  borderRadius: 2,
-                  boxShadow: 5,
-                  border: "3px solid #D4AF37",
+                  borderRadius: 3,
+                  boxShadow: "0 8px 20px rgba(0,0,0,0.6)",
+                  border: "4px solid #D4AF37",
+                  transition: "transform 0.3s ease",
+                  animation: "fadeInScale 0.8s ease-out",
+                  "&:hover": {
+                    transform: "scale(1.05) rotate(-1deg)",
+                    boxShadow: "0 12px 30px rgba(255,215,0,0.4)",
+                  },
                 }}
               />
             </Grid>
@@ -79,101 +108,126 @@ export function QyreshaPage() {
                   variant="h3"
                   component="h1"
                   gutterBottom
-                  align={isLargeScreen ? "left" : "center"}
-                  fontWeight={700}
-                  color="#FFD700"
                   sx={{
-                    fontFamily: "serif",
-                    textShadow: "2px 2px 4px #000",
+                    color: "#FFD700",
+                    fontFamily: "var(--font-title)",
+                    textShadow: "3px 3px 6px #000",
                     mb: 2,
-                    letterSpacing: 1,
+                    letterSpacing: 2,
+                    fontWeight: 900,
+                    animation: "fadeIn 1s ease-out",
+                    textAlign: { xs: "center", md: "left" },
                   }}
                 >
                   {Qyresha.nome}
                 </Typography>
 
-                <Divider sx={{ mb: 3, bgcolor: "#D4AF37" }} />
+                <Divider
+                  sx={{
+                    mb: 3,
+                    height: 3,
+                    bgcolor: "#D4AF37",
+                    boxShadow: "0 0 10px rgba(212, 175, 55, 0.5)",
+                  }}
+                />
 
                 {/* Atributos */}
                 <Typography
                   variant="h5"
-                  component="h2"
-                  gutterBottom
-                  mb={2}
-                  fontWeight={600}
-                  sx={{ fontFamily: "serif" }}
+                  sx={{
+                    color: "#FFD700",
+                    fontFamily: "var(--font-title)",
+                    mb: 2,
+                    fontWeight: 700,
+                    textAlign: "center",
+                    textShadow: "2px 2px 4px #000",
+                  }}
                 >
-                  Atributos
+                  Atributos Divinos
                 </Typography>
 
                 <Grid container spacing={2} sx={{ mb: 4 }}>
-                  {[
-                    ["Força", Qyresha.forca, <GiCrossedSwords />],
-                    ["Destreza", Qyresha.destreza, <GiMagicSwirl />],
-                    [
-                      "Constituição",
-                      Qyresha.constituicao,
-                      <GiCrossedSwords />,
-                    ],
-                    ["Inteligência", Qyresha.inteligencia, <GiMagicSwirl />],
-                    ["Sabedoria", Qyresha.sabedoria, <GiMagicSwirl />],
-                    ["Carisma", Qyresha.carisma, <GiMagicSwirl />],
-                    ["CA", Qyresha.CA, <GiCrossedSwords />],
-                  ].map(([nome, valor, icone], i) => (
-                    <Grid size={{ xs: 6 }} key={i}>
-                      <Box
-                        sx={{
-                          bgcolor: "#3A3833",
-                          border: "2px solid #D4AF37",
-                          borderRadius: 2,
-                          px: 2,
-                          py: 1,
-                          textAlign: "center",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          gap: 1,
-                          fontFamily: "serif",
-                        }}
-                      >
-                        {icone}
-                        <Typography variant="body1">
-                          <strong>{nome}:</strong> {valor}
-                        </Typography>
-                      </Box>
+                  {attributes.map((attr, index) => (
+                    <Grid size={{ xs: 6, sm: 4, md: 3 }} key={index}>
+                      <AttributeCard
+                        name={attr.name}
+                        value={attr.value}
+                        icon={attr.icon}
+                        delay={index * 0.1}
+                      />
                     </Grid>
                   ))}
                 </Grid>
 
-                <Divider sx={{ mb: 3, bgcolor: "#D4AF37" }} />
+                <Divider
+                  sx={{
+                    my: 3,
+                    height: 2,
+                    bgcolor: "#D4AF37",
+                  }}
+                />
 
                 {/* Sobre */}
                 <Typography
                   variant="h5"
-                  component="h2"
-                  gutterBottom
-                  mb={2}
-                  fontWeight={600}
-                  sx={{ fontFamily: "serif" }}
+                  sx={{
+                    color: "#FFD700",
+                    fontFamily: "var(--font-title)",
+                    mb: 2,
+                    fontWeight: 700,
+                    textShadow: "2px 2px 4px #000",
+                  }}
                 >
-                  Sobre
+                  História Sagrada
                 </Typography>
 
-                <Box sx={{ mt: 2 }}>
-                  {Qyresha.sobre.map((texto, i) => (
-                    <Typography
-                      key={i}
-                      variant="body2"
-                      paragraph
+                <Box
+                  sx={{
+                    maxHeight: { xs: 300, md: 400 },
+                    overflowY: "auto",
+                    pr: 2,
+                    "&::-webkit-scrollbar": {
+                      width: "8px",
+                    },
+                    "&::-webkit-scrollbar-track": {
+                      bgcolor: "#2C2B28",
+                      borderRadius: 10,
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                      bgcolor: "#D4AF37",
+                      borderRadius: 10,
+                      "&:hover": {
+                        bgcolor: "#FFD700",
+                      },
+                    },
+                  }}
+                >
+                  {Qyresha.sobre.map((paragrafo, index) => (
+                    <Paper
+                      key={index}
+                      elevation={2}
                       sx={{
-                        lineHeight: 1.8,
-                        fontFamily: "serif",
-                        textAlign: "justify",
-                        letterSpacing: 0.5,
-                      }}
+                        mb: 2,
+                        p: 2,
+                      bgcolor: "rgba(58, 56, 51, 0.6)",
+                      border: "1px solid #D4AF37",
+                      borderRadius: 2,
+                      animation: "fadeIn 0.6s ease-out forwards",
+                      animationDelay: `${index * 0.2}s`,
+                    }}
                     >
-                      {texto}
-                    </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontFamily: "var(--font-body)",
+                          color: "#F9E4B7",
+                          lineHeight: 1.8,
+                          fontSize: "1.05rem",
+                        }}
+                      >
+                        {paragrafo}
+                      </Typography>
+                    </Paper>
                   ))}
                 </Box>
               </Box>
@@ -181,73 +235,61 @@ export function QyreshaPage() {
           </Grid>
         </Box>
 
-        {/* --- SEÇÃO DE ITENS (SEM CARROSSEL) --- */}
-        <Box sx={{ mt: 6, textAlign: "center" }}>
+        {/* --- SEÇÃO DE RELÍQUIAS --- */}
+        <Box sx={{ mt: 6 }}>
           <Typography
             variant="h4"
             sx={{
               color: "#FFD700",
-              fontFamily: "serif",
-              mb: 3,
-              textShadow: "2px 2px 4px #000",
+              fontFamily: "var(--font-title)",
+              mb: 4,
+              textAlign: "center",
+              textShadow: "3px 3px 6px #000",
+              fontWeight: 900,
+              letterSpacing: 2,
+              animation: "fadeIn 1s ease-out",
             }}
           >
-            Itens de Qyresha
+            ✨ Relíquias de {Qyresha.nome} ✨
           </Typography>
 
-          <Grid container spacing={3} justifyContent="center">
-            {Object.values(QyreshaArray).map((item, index) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={index}>
-                <Card
-                  sx={{
-                    bgcolor: "#3A3833",
-                    color: "#F9E4B7",
-                    border: "2px solid #D4AF37",
-                    borderRadius: 3,
-                    textAlign: "center",
-                    p: 2,
-                    mx: "auto",
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="200" // Use uma unidade válida como '200px' ou apenas '200' para px
-                    // Ajuste o caminho da imagem, se necessário, para ser público
-                    image={
-                      item.imgUrl
-                        ? item.imgUrl.replace("../../../public", "")
-                        : "/placeholder/item.jpg"
-                    }
-                    alt={item.nome}
-                    sx={{
-                      objectFit: "contain",
-                      borderRadius: 2,
-                      border: "2px solid #D4AF37",
-                    }}
+          {QyreshaArray.length > 0 ? (
+            <Grid container spacing={3} justifyContent="center">
+              {QyreshaArray.map((item, index) => (
+                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={index}>
+                  <ItemCard
+                    name={item.nome}
+                    description={item.Descricao ?? "Sem descrição."}
+                    owner={item.dono}
+                    damage={item.dano}
+                    imageUrl={item.imgUrl}
+                    delay={index * 0.1}
                   />
-
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h6" sx={{ fontFamily: "serif" }}>
-                      {item.nome}
-                    </Typography>
-                    <Typography variant="body2" sx={{ mt: 1 }}>
-                      {item.Descricao ?? item.Descricao ?? ""}
-                    </Typography>
-                    <Typography>
-                      <strong>Dono:</strong> {item.dono}
-                    </Typography>
-                    <Typography>
-                      <strong>Dano:</strong> {item.dano}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+                </Grid>
+              ))}
+            </Grid>
+          ) : (
+            <Box
+              sx={{
+                textAlign: "center",
+                py: 4,
+                bgcolor: "#2C2B28",
+                borderRadius: 3,
+                border: "2px solid #D4AF37",
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "#D4AF37",
+                  fontFamily: "var(--font-body)",
+                  fontStyle: "italic",
+                }}
+              >
+                Nenhuma relíquia encontrada para esta deusa.
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Container>
     </>
