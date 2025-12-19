@@ -61,7 +61,7 @@ export function QyreshaPage() {
               height: "100%",
               background:
                 "linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent)",
-              animation: "shimmer 3s infinite",
+              animation: "shimmer 3s ",
             },
           }}
         >

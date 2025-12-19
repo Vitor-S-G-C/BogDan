@@ -24,6 +24,7 @@ import {
   
 } from "react-icons/gi";
 import items from "../../../data/dataArma/items.json";
+import { GiCheckedShield } from "react-icons/gi";
 
 export function BogDanPage() {
   const BogDanItems = Object.values(items).filter(
@@ -283,7 +284,9 @@ export function BogDanPage() {
             animation: "fadeIn 1s ease-out",
           }}
         >
-          ⚔️ Arsenal de {BogDan.nome.split(",")[0]} ⚔️
+         <GiCheckedShield />
+  Arsenal de {BogDan.nome.split(",")[0]} <GiCheckedShield />
+
         </Typography>
 
         {BogDanItems.length > 0 ? (
