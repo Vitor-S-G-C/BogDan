@@ -4,6 +4,8 @@
   --font-title: 'Cinzel', serif;
   --font-medieval: 'MedievalSharp', cursive;
   --font-body: 'Crimson Text', serif;
+  /* Alias para compatibilidade com páginas que usam --font-text */
+  --font-text: var(--font-body);
   
   /* Cores Temáticas */
   --color-gold: #FFD700;

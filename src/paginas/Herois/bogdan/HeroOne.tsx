@@ -8,7 +8,10 @@ import {
   Container,
   Divider,
   Paper,
+  Link,
+  Button,
 } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 import {
   GiCrossedSwords,
   GiMagicSwirl,
@@ -17,6 +20,8 @@ import {
   GiWisdom,
   GiPublicSpeaker,
   GiShield,
+  GiSecretBook,
+  
 } from "react-icons/gi";
 import items from "../../../data/dataArma/items.json";
 
@@ -24,6 +29,7 @@ export function BogDanPage() {
   const BogDanItems = Object.values(items).filter(
     (item) => item.dono && item.dono.includes("BogDan")
   );
+  const isActive = (path: string) => location.pathname === path;
 
   const attributes = [
     { name: "Força", value: BogDan.forca, icon: <GiCrossedSwords /> },
@@ -57,7 +63,7 @@ export function BogDanPage() {
             height: "100%",
             background:
               "linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent)",
-            animation: "shimmer 3s infinite",
+            animation: "shimmer 3s ",
           },
         }}
       >
@@ -115,8 +121,40 @@ export function BogDanPage() {
                   textAlign: { xs: "center", md: "left" },
                 }}
               >
-                {BogDan.nome}
+                {BogDan.nome}  
               </Typography>
+
+              <Button
+              component={RouterLink}
+              to="/Diario"
+              startIcon={<GiSecretBook />}
+              sx={{
+                color: isActive("/Diario") ? "#FFD700" : "#F9E4B7",
+                fontFamily: "var(--font-title)",
+                fontWeight: 600,
+                px: 2.5,
+                py: 1,
+                borderRadius: 2,
+                border: "2px solid transparent",
+                transition: "all 0.3s ease",
+                textTransform: "uppercase",
+                letterSpacing: 1,
+                ...(isActive("/herois") && {
+                  bgcolor: "rgba(255, 215, 0, 0.15)",
+                  borderColor: "#FFD700",
+                  boxShadow: "0 0 15px rgba(255, 215, 0, 0.3)",
+                }),
+                "&:hover": {
+                  color: "#FFD700",
+                  bgcolor: "rgba(255, 215, 0, 0.1)",
+                  borderColor: "#D4AF37",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 4px 12px rgba(255, 215, 0, 0.4)",
+                },
+              }}
+            >
+              Diario
+              </Button>
 
               <Divider
                 sx={{

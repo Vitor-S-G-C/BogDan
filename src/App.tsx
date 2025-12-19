@@ -7,6 +7,7 @@ import HeroOne from "./paginas/Herois/bogdan/HeroOne";
 import FyrelviaPage from "./paginas/GodsHome/Fyrelvia/GodOne";
 import QyreshaPage from "./paginas/GodsHome/Qyresha/GodTwo";
 import { Box, CssBaseline } from "@mui/material";
+import DiarioPage from "./paginas/diario/DiarioPage";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/deusas" element={<GodHome />} />
             <Route path="/Fyrelvia" element={<FyrelviaPage />} />
             <Route path="/Qyresha" element={<QyreshaPage />} />
+            <Route path="/Diario" element={<DiarioPage />} />
           </Routes>
         </Container>
       </Box>
