@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import HomeHero from "./paginas/Herois/HomeHero";
 import GodHome from "./paginas/GodsHome/GodHome";
 import HeroOne from "./paginas/Herois/bogdan/HeroOne";
+import HeroMortarion from "./paginas/Herois/mortarion/HeroMortarion";
 import FyrelviaPage from "./paginas/GodsHome/Fyrelvia/GodOne";
 import QyreshaPage from "./paginas/GodsHome/Qyresha/GodTwo";
 import { Box, CssBaseline } from "@mui/material";
@@ -24,7 +25,8 @@ export default function App() {
         <Container maxWidth="lg">
           <Routes>
             <Route path="/" element={<HeroOne />} />
-            <Route path="/herois" element={<HomeHero />} />
+            <Route path="/herois/*" element={<HomeHero />} />
+            <Route path="/mortarion" element={<HeroMortarion />} />
             <Route path="/deusas" element={<GodHome />} />
             <Route path="/Fyrelvia" element={<FyrelviaPage />} />
             <Route path="/Qyresha" element={<QyreshaPage />} />

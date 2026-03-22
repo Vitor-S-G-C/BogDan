@@ -8,8 +8,9 @@ import {
   Container,
   Divider,
   Paper,
-  Link,
   Button,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -21,6 +22,7 @@ import {
   GiPublicSpeaker,
   GiShield,
   GiSecretBook,
+  GiCrossMark,
   
 } from "react-icons/gi";
 import items from "../../../data/dataArma/items.json";
@@ -107,23 +109,54 @@ export function BogDanPage() {
           {/* Seção de Informações */}
           <Grid size={{ xs: 12, md: 8 }}>
             <Box sx={{ p: { xs: 3, md: 5 } }}>
-              <Typography
-                variant="h3"
-                component="h1"
-                gutterBottom
+              <Box
                 sx={{
-                  color: "#FFD700",
-                  fontFamily: "var(--font-title)",
-                  textShadow: "3px 3px 6px #000",
                   mb: 2,
-                  letterSpacing: 2,
-                  fontWeight: 900,
-                  animation: "fadeIn 1s ease-out",
-                  textAlign: { xs: "center", md: "left" },
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: { xs: "center", md: "space-between" },
+                  gap: 2,
+                  flexWrap: "wrap",
                 }}
               >
-                {BogDan.nome}  
-              </Typography>
+                <Typography
+                  variant="h3"
+                  component="h1"
+                  gutterBottom
+                  sx={{
+                    color: "#FFD700",
+                    fontFamily: "var(--font-title)",
+                    textShadow: "3px 3px 6px #000",
+                    mb: 0,
+                    letterSpacing: 2,
+                    fontWeight: 900,
+                    animation: "fadeIn 1s ease-out",
+                    textAlign: { xs: "center", md: "left" },
+                  }}
+                >
+                  {BogDan.nome}
+                </Typography>
+
+                <Tooltip title="Ir para Mortarion">
+                  <IconButton
+                    component={RouterLink}
+                    to="/herois/mortarion"
+                    sx={{
+                      color: "#FFD700",
+                      border: "2px solid #D4AF37",
+                      bgcolor: "rgba(255, 215, 0, 0.08)",
+                      boxShadow: "0 0 12px rgba(255, 215, 0, 0.25)",
+                      "&:hover": {
+                        bgcolor: "rgba(255, 215, 0, 0.18)",
+                        transform: "translateY(-2px) scale(1.05)",
+                        boxShadow: "0 0 18px rgba(255, 215, 0, 0.4)",
+                      },
+                    }}
+                  >
+                    <GiCrossMark />
+                  </IconButton>
+                </Tooltip>
+              </Box>
 
               <Button
               component={RouterLink}
